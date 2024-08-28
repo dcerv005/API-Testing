@@ -30,6 +30,9 @@ def create_app(config_name):
     limiter.init_app(app)
     CORS(app)
 
+    blue_print_config(app)
+    configure_rate_limit()
+
     return app
 
 def blue_print_config(app):
@@ -47,8 +50,7 @@ def configure_rate_limit():
 if __name__ == '__main__':
     app = create_app('DevelopmentConfigAssignment')
 
-    blue_print_config(app)
-    configure_rate_limit()
+    
 
     with app.app_context():
         db.drop_all()
